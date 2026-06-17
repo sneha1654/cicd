@@ -1,39 +1,26 @@
 pipeline {
-    agent any
+    agent any 
 
     stages {
-        stage('Checkout') {
-            steps {
-                git branch: 'main',
-                    url: 'https://github.com/your-username/your-repo.git'
-            }
-        }
-
-        stage('Install Dependencies') {
-            steps {
-                sh 'npm install'
-            }
-        }
-
         stage('Build') {
             steps {
-                sh 'npm run build'
+                echo 'Building your application...'
+                sh 'echo "Insert build commands here (e.g., npm run build, mvn package)"'
             }
         }
-
+        
         stage('Test') {
             steps {
-                sh 'npm test'
+                echo 'Testing your application...'
+                sh 'echo "Insert test commands here (e.g., npm test, pytest)"'
             }
         }
-    }
-
-    post {
-        success {
-            echo 'Build completed successfully!'
-        }
-        failure {
-            echo 'Build failed!'
+        
+        stage('Deploy') {
+            steps {
+                echo 'Deploying your application...'
+                sh 'echo "Insert deployment commands here"'
+            }
         }
     }
 }
